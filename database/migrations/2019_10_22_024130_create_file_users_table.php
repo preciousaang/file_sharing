@@ -17,6 +17,7 @@ class CreateFileUsersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('file_id');
             $table->unsignedBigInteger('user_id');
+            $table->string('name');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
