@@ -46,6 +46,12 @@ class User extends Authenticatable
     }
 
     public function files(){
-        $this->belongsToMany('App\File');
-    }    
+        return $this->hasMany('App\File');
+    }
+
+    public function savedFiles(){
+        return $this->belongsToMany('App\File');
+    }
+
+    
 }

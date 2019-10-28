@@ -17,7 +17,11 @@ class CreateFilesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('filename');
-            $table->string('extension');            
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('description');
+            $table->string('course_code');
+            $table->string('extension');
             $table->timestamps();
         });
     }

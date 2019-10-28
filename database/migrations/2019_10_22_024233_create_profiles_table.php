@@ -16,16 +16,14 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('title')->nullable()->comment('Whether Mr. or Dr. or Prof.');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');            
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->date('dob')->nullable();
-            $table->tinyInteger('level')->nullable();
-            $table->integer('mat_no')->nullable();
-            $table->integer('employment_no')->nullable();
-            $table->string('profile_pic')->nullable();
+            $table->string('last_name')->nullable();            
+            $table->unsignedInteger('level')->nullable();
+            $table->string('mat_no')->nullable();
+            $table->string('employment_no')->nullable();
+            $table->boolean('touched')->default(0);
             $table->timestamps();
         });
     }

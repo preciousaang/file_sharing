@@ -24,7 +24,7 @@ class RegisterController extends Controller
             'email'=>$request->input('email'),
             'role_id'=>$request->input('role'),
         ]);
-        if($newUser){
+        if($newUser){            
             $request->session()->flash('success', 'Your account has been created successfully');
             return response()->json($newUser, 200);
         }

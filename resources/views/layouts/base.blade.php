@@ -6,9 +6,11 @@
         @section('meta')
         @show
         <title>@yield('title', 'Welcome') | {{env('APP_NAME')}}</title>
+        @section('css')
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-        <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        @show
     </head>
     <body>
     @include('layouts.nav')

@@ -8,19 +8,21 @@ class Profile extends Model
 {
     protected $fillable = [
         'user_id',        
-        'title',
         'first_name',
         'middle_name',
-        'last_name',
-        'dob',
+        'last_name',        
         'level',
+        'touched',
         'mat_no',
         'employment_no',
-        'profile_pic',
     ];
 
     public function user(){
-        $this->belongsTo('App\User');
+        return $this->belongsTo('App\User');
+    }
+
+    public function getFullNameAttribute(){
+        return $this->first_name. " ". $this->last_name;
     }
 
 }
