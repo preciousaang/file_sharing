@@ -3,10 +3,8 @@
 @section('content')
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-3">
-                <div class="card">
-                    <img src="{{asset('storage/profile_pics/'.$user->profile->profile_pic)}}" class="card-img-top">
-                </div>
+            <div class="col-md-3">            
+                <img src="{{asset('storage/profile_pics/'.$user->profile->profile_pic)}}" class=" w-100 img-thumbnail rounded img-fluid img-responsive">               
             </div>
             <div class="col-md-9">
                 <div class="card">
