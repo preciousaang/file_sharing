@@ -13,7 +13,9 @@ class Profile extends Model
         'last_name',        
         'level',
         'touched',
+        'dob',
         'mat_no',
+        'profile_pic',
         'employment_no',
     ];
 

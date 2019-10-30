@@ -32,6 +32,8 @@ class UsersController extends Controller
             'first_name'=>'required|max:100',
             'middle_name'=>'required|max:100',
             'last_name'=>'required|max:100',
+            'dob'=>'required|date',
+            'profile_pic'=>'image|max:2048',
             'mat_no'=>[
                 Rule::requiredIf(auth()->user()->role->name=='student'),
                 'starts_with:PSC'
@@ -45,7 +47,23 @@ class UsersController extends Controller
             ]
         ]);
         $user = auth()->user();
-        
+        if($request->has('profile_pic')){
+            $profile_pic = basename($request->file('profile_pic')->store('public/profile_pics'));
+            $user->profile()->updateOrCreate(
+                [],
+                [
+                'first_name'=>$request->input('first_name'),
+                'middle_name'=>$request->input('middle_name'),
+                'last_name'=>$request->input('last_name'),
+                'mat_no'=>$request->input('mat_no'),
+                'dob'=>$request->input('dob'),            
+                'employment_no'=>$request->input('employment_no'),
+                'level'=>$request->input('level'),
+                'profile_pic'=>$profile_pic,                
+                'touched'=>1,
+            ]);
+            return redirect()->route('edit-profile')->with('success', 'Profile Updated Successfully');
+        }
         $user->profile()->updateOrCreate(
             [],
             [
@@ -53,6 +71,7 @@ class UsersController extends Controller
             'middle_name'=>$request->input('middle_name'),
             'last_name'=>$request->input('last_name'),
             'mat_no'=>$request->input('mat_no'),
+            'dob'=>$request->input('dob'),            
             'employment_no'=>$request->input('employment_no'),
             'level'=>$request->input('level'),
             'touched'=>1,

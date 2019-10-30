@@ -16,6 +16,12 @@
             <input type="text" name="last_name" class="form-control" value="{{old('last_name')}}">
         </div>
     </div>
+    <div class="row form-group">
+        <label for="" class="col-form-label col-md-3 text-right">Date Of Birth</label>
+        <div class="col-md-8">
+            <input type="date" name="dob" class="form-control" value="{{old('dob')}}">
+        </div>
+    </div>
     @if($user->role->name=="student")
     <div class="row form-group">
         <label for="" class="col-form-label col-md-3 text-right">Level</label>
@@ -36,6 +42,20 @@
                 <input type="text" name="employment_no" class="form-control" value="{{old('employee_no')}}">
             </div>
         @endif
+    </div>
+    <div class="row form-group">
+        <label for="file" class="col-form-label col-md-3 text-right">Profile Picture</label>
+        <div class="col-md-8">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" name="profile_pic" class="custom-file-input" id="file"  aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+            </div>
+        </div>                            
     </div>
     <div class="row form-group">
         <div class="col-md-8 offset-md-3">

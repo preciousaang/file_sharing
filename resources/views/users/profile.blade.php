@@ -3,7 +3,12 @@
 @section('content')
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{asset('storage/profile_pics/'.$user->profile->profile_pic)}}" class="card-img-top">
+                </div>
+            </div>
+            <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
                         <p class="text-center"><b>My Profile</b></p>
@@ -15,7 +20,8 @@
                             <div class="d-flex justify-content-between">
                                 <span>First Name: {{$user->profile->first_name}}</span>
                                 <span>Middle Name: {{$user->profile->middle_name}}</span>
-                                <span>Last Name: {{$user->profile->last_name}}</span>                                
+                                <span>Last Name: {{$user->profile->last_name}}</span>                                       
+                                <span>Date of Bith: {{$user->profile->dob}}</span>
                             </div>  <hr>
                             <p class="text-center"><b>Account Information</b></p>
                             <div class="d-flex justify-content-between">

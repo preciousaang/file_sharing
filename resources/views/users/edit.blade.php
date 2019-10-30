@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <div class="container">
                             @include('partials.partials')
-                            <form method="post" action="{{route('update-profile')}}">
+                            <form enctype="multipart/form-data" method="post" action="{{route('update-profile')}}">
                                 @csrf @method('post')
                                 @if(auth()->user()->profile()->exists())
                                     @include('users.edit-profile.yes-profile')
