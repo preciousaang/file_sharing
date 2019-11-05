@@ -60,6 +60,5 @@
     <div class="row form-group">
         <div class="col-md-8 offset-md-3">
             <input type="submit" value="Update Profile" class="btn btn-primary">
-        </div>
-        
+        </div>        
     </div>

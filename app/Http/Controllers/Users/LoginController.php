@@ -17,8 +17,10 @@ class LoginController extends Controller
     }
 
     public function login(Request $request){
-        $credentials = $request->only('username', 'password');        
-        if(Auth::attempt($credentials, $request->input('remember'))){
+        $credentials = $request->only('username', 'password'); 
+        $username = $request->input('username');
+        $password = $request->input('password');
+        if(Auth::attempt(['username'=>$username, 'password'=>$password, 'status'=>1],$request->input('remember'))){
             if($request->has('prev')){
                 return redirect($request->get('prev'));
             }

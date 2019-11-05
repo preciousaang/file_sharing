@@ -31,7 +31,7 @@
                     @include('partials.partials')
                     <div class="list-group">
                         @forelse($files as $file)
-                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <a href="{{route('comments', $file->id)}}" class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="d-flex justify-content-between">
                                     <h5 class="mb-1">{{$file->name}}</h5>
                                     <small><i>Uploaded by {{$file->user->profile->full_name}}</i> {{$file->created_at->diffForHumans()}}</small>

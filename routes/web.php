@@ -23,7 +23,17 @@ Route::middleware(['check-user'])->group(function(){
         Route::post('register', 'RegisterController@register')->name('register');
         Route::get('login', 'LoginController@form')->name('login-form');
         Route::post('login', 'LoginController@login')->name('login');
-        Route::any('logout', 'LoginController@logout')->name('logout');    
+        Route::any('logout', 'LoginController@logout')->name('logout');
+        Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+        Route::get('dashboard/staffs', 'Dashboardcontroller@staff')->name('staffs');
+        Route::get('dashboard/students', 'Dashboardcontroller@students')->name('students');
+        Route::get('dashboard/blocked-users', 'Dashboardcontroller@blockedUsers')->name('blocked-users');
+        Route::get('dashboard/{id}/block-user','Dashboardcontroller@blockUser')->name('block-user');
+        Route::get('dashboard/{id}/unblock-user','Dashboardcontroller@unblockUser')->name('unblock-user');
+        Route::get('dashboard/{id}/delete-user','Dashboardcontroller@deleteUser')->name('delete-user');
+        Route::get('dashboard/files', 'Dashboardcontroller@files')->name('files');
+        
+        
     });
 
     //Other links
@@ -31,6 +41,8 @@ Route::middleware(['check-user'])->group(function(){
     Route::post('upload', 'FilesController@upload')->name('upload');
     Route::get('files', 'FilesController@list')->name('file-list');
     Route::get('file/{id}/download', 'FilesController@download')->name('download-file');
+    Route::get('file/{id}/comments', 'FilesController@view')->name('comments');
+    Route::post('file/{id}/comment', 'FilesController@add_comment')->name('add-comment');
     Route::get('files/{dept}', 'FilesController@list')->name('dept-list');
     Route::get('search', 'FilesController@search')->name('search-files');
     Route::get('my-files', 'FilesController@myFiles')->name('my-files');

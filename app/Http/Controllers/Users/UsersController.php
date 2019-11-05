@@ -76,7 +76,7 @@ class UsersController extends Controller
             'level'=>$request->input('level'),
             'touched'=>1,
         ]);
-        return redirect()->route('edit-profile')->with('success', 'Profile Updated Successfully');
+        return redirect()->route('profile')->with('success', 'Profile Updated Successfully');
         
     }
 }

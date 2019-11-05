@@ -10,7 +10,7 @@ class Profile extends Model
         'user_id',        
         'first_name',
         'middle_name',
-        'last_name',        
+        'last_name',
         'level',
         'touched',
         'dob',

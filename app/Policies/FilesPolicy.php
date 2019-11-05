@@ -53,7 +53,7 @@ class FilesPolicy
      */
     public function update(User $user, File $file)
     {
-        //
+        return ($user->id==$file->user_id || $user->role->name=='admin');
     }
 
     /**
@@ -65,7 +65,7 @@ class FilesPolicy
      */
     public function delete(User $user, File $file)
     {
-        return ($user->id===$file->user_id);
+        return ($user->id===$file->user_id || $user->role->name=='admin');
     }
 
     /**

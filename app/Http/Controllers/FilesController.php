@@ -86,4 +86,32 @@ class FilesController extends Controller
         $file->delete();
         return redirect()->back()->with('message', 'File Deleted');
     }
+
+    public function add_comment(Request $request){
+        $request->validate([            
+            'body'=>'required',
+            'rating'=>'required|numeric|min:1|max:10',
+        ]);
+        $file = File::findOrFail($request->id);
+        $file->comments()->create([
+            'body'=> $request->input('body'),
+            'rating'=>$request->input('rating'),
+            'user_id'=>auth()->user()->id,
+        ]); 
+        return redirect()->back()->with('success', 'Comment Added Successfully!');
+    }
+
+    public function comments(Request $request){
+        $file = File::findOrFail($request->id);
+        $comments = $file->comments();
+    }
+
+    public function view(Request $request){
+        $file = File::findOrFail($request->id);
+        
+        return view('files.view', [
+            'file'=>$file,
+            'avg_rating'=> round($file->comments()->avg('rating'), 1),
+        ]);
+    }    
 }
