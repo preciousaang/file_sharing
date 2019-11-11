@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use App\File;
 
 class DashboardController extends Controller
 {
@@ -16,17 +17,18 @@ class DashboardController extends Controller
 
     public function index(){
         return view('dashboard.index', [
-            'users'=>Role::find(2)->users()->paginate(40),
+            'staff'=>Role::find(2)->users()->count(),
+            'students'=>Role::find(1)->users()->count(),
+            'files'=>File::count()
         ]);
     }
     
     public function staffs(){
-        return view('dashboard.index');
+        return view('dashboard.index', [
+            'users'=>Role::find(2)->users()->paginate(40),
+        ]);
     }
-
-    public function blockedUsers(){
-        return view('dashboard.index');
-    }
+    
 
     public function students(){
         return view('dashboard.index', [

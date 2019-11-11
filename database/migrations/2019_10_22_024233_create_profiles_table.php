@@ -22,9 +22,11 @@ class CreateProfilesTable extends Migration
             $table->string('last_name')->nullable();            
             $table->unsignedInteger('level')->nullable();
             $table->date('dob')->nullabe();
+            $table->string('phone')->nullable();
             $table->string('mat_no')->nullable();
             $table->string('employment_no')->nullable();
-            $table->boolean('touched')->default(0);
+            $table->string('address')->nullable();
+            //$table->boolean('touched')->default(0);
             $table->string('profile_pic')->nullable();
             $table->timestamps();
         });

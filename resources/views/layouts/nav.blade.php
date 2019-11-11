@@ -36,6 +36,12 @@
                         @endif
                     </a>
                     <div class="dropdown-menu">
+                        @if(auth()->check() && auth()->user()->role->name=='admin')
+                        <a class="dropdown-item" href="{{route('dashboard')}}">Admin Dashboard</a>
+                        @endif
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{route('change-password')}}">Change Password</a>
+                        <div class="dropdown-divider"></div>
                         <a href="{{route('my-files')}}" class="dropdown-item">My Files</a>
                         <div class="dropdown-divider"></div>
                         <a href="{{route('profile')}}" class="dropdown-item">Profile</a>

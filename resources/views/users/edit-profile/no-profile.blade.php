@@ -22,6 +22,18 @@
             <input type="date" name="dob" class="form-control" value="{{old('dob')}}">
         </div>
     </div>
+    <div class="row form-group">
+        <label for="" class="col-form-label col-md-3 text-right">Phone Number</label>
+        <div class="col-md-8">
+            <input type="text" name="phone" class="form-control" value="{{old('phone')}}">
+        </div>
+    </div>
+    <div class="row form-group">
+        <label for="" class="col-form-label col-md-3 text-right">Address</label>
+        <div class="col-md-8">
+            <textarea name="address" class="form-control">{{old('address')}}</textarea>
+        </div>
+    </div>
     @if($user->role->name=="student")
     <div class="row form-group">
         <label for="" class="col-form-label col-md-3 text-right">Level</label>

@@ -24,10 +24,11 @@ Route::middleware(['check-user'])->group(function(){
         Route::get('login', 'LoginController@form')->name('login-form');
         Route::post('login', 'LoginController@login')->name('login');
         Route::any('logout', 'LoginController@logout')->name('logout');
+        Route::get('change-password', 'UsersController@change_password')->name('change-password');
+        Route::post('change-password', 'UsersController@update_password')->name('update-password');
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-        Route::get('dashboard/staffs', 'Dashboardcontroller@staff')->name('staffs');
-        Route::get('dashboard/students', 'Dashboardcontroller@students')->name('students');
-        Route::get('dashboard/blocked-users', 'Dashboardcontroller@blockedUsers')->name('blocked-users');
+        Route::get('dashboard/staffs', 'Dashboardcontroller@staffs')->name('staffs');
+        Route::get('dashboard/students', 'Dashboardcontroller@students')->name('students');        
         Route::get('dashboard/{id}/block-user','Dashboardcontroller@blockUser')->name('block-user');
         Route::get('dashboard/{id}/unblock-user','Dashboardcontroller@unblockUser')->name('unblock-user');
         Route::get('dashboard/{id}/delete-user','Dashboardcontroller@deleteUser')->name('delete-user');
